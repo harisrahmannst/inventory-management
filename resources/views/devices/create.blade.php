@@ -7,37 +7,37 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
             <form>
+
                 <div class="mb-6">
-                    <label for="namedevice" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Device
+                    <label for="device_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Device
                         Name</label>
-                    <input type="namedevice" id="namedevice"
+                    <input type="text" id="device_name"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                        placeholder="name@flowbite.com" required>
+                        required>
                 </div>
 
+                {{-- Form Untuk tipe perangkat --}}
                 <div class="mb-6">
-                    <label for="countries"
+                    <label for="type"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type</label>
-                    <select id="countries"
+                    <select id="type"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option>United States</option>
-                        <option>Canada</option>
-                        <option>France</option>
-                        <option>Germany</option>
+
+                        @foreach ($types as $type)
+                            <option value="{{ $type->id }}">{{ $type->name_type }}</option>
+                        @endforeach
                     </select>
                 </div>
 
                 <div class="mb-6">
-                    <label for="countries"
+                    <label for="brand"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Brand</label>
-                    <select id="countries"
+                    <select id="brand"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option>United States</option>
-                        <option>Canada</option>
-                        <option>France</option>
-                        <option>Germany</option>
+                        @foreach ($brands as $brand)
+                            <option value="{{ $brand->id }}">{{ $brand->name_brand }}</option>
+                        @endforeach
                     </select>
                 </div>
 
@@ -46,30 +46,28 @@
                         Number</label>
                     <input type="namedevice" id="namedevice"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                        placeholder="name@flowbite.com" required>
+                        required>
                 </div>
 
                 <div class="mb-6">
-                    <label for="countries"
+                    <label for="site"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Site</label>
-                    <select id="countries"
+                    <select id="site"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option>United States</option>
-                        <option>Canada</option>
-                        <option>France</option>
-                        <option>Germany</option>
+                        @foreach ($sites as $site)
+                            <option value="{{ $site->id }}">{{ $site->name_site }}</option>
+                        @endforeach
                     </select>
                 </div>
 
                 <div class="mb-6">
-                    <label for="countries"
+                    <label for="location"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Location</label>
-                    <select id="countries"
+                    <select id="location"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option>United States</option>
-                        <option>Canada</option>
-                        <option>France</option>
-                        <option>Germany</option>
+                        @foreach ($locations as $location)
+                            <option value="{{ $location->id }}">{{ $location->name_location }}</option>
+                        @endforeach
                     </select>
                 </div>
 
@@ -78,10 +76,9 @@
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rack</label>
                     <select id="countries"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option>United States</option>
-                        <option>Canada</option>
-                        <option>France</option>
-                        <option>Germany</option>
+                        @foreach ($racks as $rack)
+                            <option value="{{ $rack->id }}">{{ $rack->name_rack }}</option>
+                        @endforeach
                     </select>
                 </div>
 
@@ -95,7 +92,8 @@
 
                 <button type="submit"
                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Submit</button>
+                    Submit
+                </button>
             </form>
         </div>
     </div>

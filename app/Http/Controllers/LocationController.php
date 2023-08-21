@@ -2,15 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\device;
-use App\Models\type;
-use App\Models\brand;
-use App\Models\site;
 use App\Models\location;
-use App\Models\rack;
 use Illuminate\Http\Request;
 
-class DeviceController extends Controller
+class LocationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +13,6 @@ class DeviceController extends Controller
     public function index()
     {
         //
-        return view('devices.index');
     }
 
     /**
@@ -27,12 +21,6 @@ class DeviceController extends Controller
     public function create()
     {
         //
-        $locations = location::all();
-        $sites = site::all();
-        $brands = brand::all();
-        $types = type::all();
-        $racks = rack::all();
-        return view('devices.create', compact('types', 'brands', 'sites', 'locations', 'racks'));
     }
 
     /**
@@ -46,7 +34,7 @@ class DeviceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(device $device)
+    public function show(location $location)
     {
         //
     }
@@ -54,7 +42,7 @@ class DeviceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(device $device)
+    public function edit(location $location)
     {
         //
     }
@@ -62,7 +50,7 @@ class DeviceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, device $device)
+    public function update(Request $request, location $location)
     {
         //
     }
@@ -70,7 +58,7 @@ class DeviceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(device $device)
+    public function destroy(location $location)
     {
         //
     }
