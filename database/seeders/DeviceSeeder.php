@@ -24,7 +24,7 @@ class DeviceSeeder extends Seeder
             'device_site_id' => "1",
             'device_location_id' => "2",
             'device_rack_id' => "1",
-            'device_status' => "Prod",
+            'device_status' => "Digunakan",
             'device_image' => "",
             'device_describtion' => "Memory Besar",
             'qrcode' => "",
