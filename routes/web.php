@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DeviceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,5 +29,7 @@ Route::middleware([
     Route::get('/device', function () {
         return view('devices.index');
     })->name('device');
+
+    Route::resource('device', DeviceController::class);
 
 });
