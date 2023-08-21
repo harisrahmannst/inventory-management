@@ -20,7 +20,7 @@ return new class extends Migration
             $table->ForeignId('device_site_id')-> constrained('sites')->cascadeOnUpdate()->cascadeOnDelete();
             $table->ForeignId('device_location_id')-> constrained('locations')->cascadeOnUpdate()->cascadeOnDelete();
             $table->ForeignId('device_rack_id')-> constrained('racks')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->string('device_status');
+            $table->enum("device_status", ["Digunakan", "Disewakan", "Idle"])->default("Idle");
             $table->string('device_image');
             $table->string('device_describtion');
             $table->string('qrcode');
