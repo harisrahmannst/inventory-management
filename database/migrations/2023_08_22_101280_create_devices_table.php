@@ -23,7 +23,7 @@ return new class extends Migration
             $table->enum("device_status", ["Digunakan", "Disewakan", "Idle"])->default("Idle");
             $table->string('device_image');
             $table->string('device_describtion');
-            $table->string('qrcode');
+            $table->string('qrcode')->nullable();
             $table->timestamps();
         });
     }

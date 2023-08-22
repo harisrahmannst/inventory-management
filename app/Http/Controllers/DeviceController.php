@@ -9,6 +9,8 @@ use App\Models\site;
 use App\Models\location;
 use App\Models\rack;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Redirect;
 
 class DeviceController extends Controller
 {
@@ -38,9 +40,43 @@ class DeviceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, device $device)
     {
         //
+        $request->validate([
+            'device_name' => 'required',
+            'device_brand_id' => 'required',
+            'serial_number' => 'required',
+            'device_type_id' => 'required',
+            'device_site_id' => 'required',
+            'device_location_id' => 'required',
+            'device_rack_id' => 'required',
+            'device_status' => 'required',
+            'device_image' => 'required',
+            'device_describtion' => 'required',
+        ]);
+
+        $file = $request->file('device_image');
+
+        $path = time() . '_' . $request->device_name . '.' . $file->getClientOriginalExtension();
+        Storage::disk('local')->put('./images/device/' . $path, file_get_contents($file));
+
+        $device->create([
+            'device_name' => $request->device_name,
+            'device_brand_id' => $request->device_brand_id,
+            'serial_number' => $request->serial_number,
+            'device_type_id' => $request->device_type_id,
+            'device_site_id' => $request->device_site_id,
+            'device_location_id' => $request->device_location_id,
+            'device_rack_id' => $request->device_rack_id,
+            'device_status' => $request->device_status,
+            'device_describtion' => $request->device_describtion,
+            'device_image' => $path
+        ]);
+
+        return redirect()->route('device.index')
+        ->with('success', 'User Created Successfully.');
+
     }
 
     /**
