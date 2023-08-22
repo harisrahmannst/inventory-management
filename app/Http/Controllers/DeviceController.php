@@ -75,7 +75,7 @@ class DeviceController extends Controller
         ]);
 
         return redirect()->route('device.index')
-        ->with('success', 'User Created Successfully.');
+        ->with('success', 'Asset Created Successfully.');
 
     }
 
