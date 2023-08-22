@@ -59,7 +59,7 @@ class DeviceController extends Controller
         $file = $request->file('device_image');
 
         $path = time() . '_' . $request->device_name . '.' . $file->getClientOriginalExtension();
-        Storage::disk('local')->put('./images/device/' . $path, file_get_contents($file));
+        Storage::disk('local')->put('public/images/' . $path, file_get_contents($file));
 
         $device->create([
             'device_name' => $request->device_name,
