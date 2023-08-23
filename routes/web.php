@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DeviceController;
 
@@ -31,5 +32,11 @@ Route::middleware([
     })->name('device');
 
     Route::resource('device', DeviceController::class);
+
+    Route::get('/site', function () {
+        return view('sites.index');
+    })->name('site');
+
+    Route::resource('site', SiteController::class);
 
 });
