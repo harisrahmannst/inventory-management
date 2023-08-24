@@ -34,6 +34,11 @@ Route::middleware([
     })->name('device');
     Route::resource('device', DeviceController::class);
 
+    Route::get('/brand', function () {
+        return view('brands.index');
+    })->name('brands');
+    Route::resource('brand', \App\Http\Controllers\BrandController::class);
+
     Route::get('/site', function () {
         return view('sites.index');
     })->name('site');
