@@ -56,6 +56,9 @@
                                     Rack
                                 </th>
                                 <th scope="col" class="px-6 py-3">
+                                    Status
+                                </th>
+                                <th scope="col" class="px-6 py-3">
 
                                 </th>
 
@@ -85,6 +88,9 @@
                                     </td>
                                     <td class="px-6 py-4">
                                         {{ $device->racks->name_rack }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ $device->device_status }}
                                     </td>
 
                                     <td class="px-6 py-4">
