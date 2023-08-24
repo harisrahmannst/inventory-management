@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\location;
+use App\Models\site;
 use Illuminate\Http\Request;
 
 class LocationController extends Controller
@@ -12,7 +13,9 @@ class LocationController extends Controller
      */
     public function index()
     {
-        //
+        $locations = location::with('site')->get();
+        
+        return view('locations.index', compact('locations'));
     }
 
     /**
@@ -20,7 +23,8 @@ class LocationController extends Controller
      */
     public function create()
     {
-        //
+        $sites = site::all();
+        return view('locations.create', compact('sites'));
     }
 
     /**
@@ -28,7 +32,14 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name_location' => 'required',
+            'site_id' => 'required|exists:sites,id',
+        ]);
+    
+        Location::create($data);
+    
+        return redirect('/location')->with('success', 'Location created successfully.');
     }
 
     /**
@@ -44,7 +55,9 @@ class LocationController extends Controller
      */
     public function edit(location $location)
     {
-        //
+        $sites = site::all();
+
+        return view('locations.edit', compact('location', 'sites'));
     }
 
     /**
@@ -52,7 +65,14 @@ class LocationController extends Controller
      */
     public function update(Request $request, location $location)
     {
-        //
+        $data = $request->validate([
+            'name_location' => 'required',
+            'site_id' => 'required|exists:sites,id',
+        ]);
+    
+        $location->update($data);
+    
+        return redirect('/location')->with('success', 'Location created successfully.');
     }
 
     /**
@@ -60,6 +80,8 @@ class LocationController extends Controller
      */
     public function destroy(location $location)
     {
-        //
+        $location->delete();
+
+        return redirect('/location')->with('success', 'Location deleted successfully.');
     }
 }
