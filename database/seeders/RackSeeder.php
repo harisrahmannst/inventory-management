@@ -16,7 +16,8 @@ class RackSeeder extends Seeder
         //
         DB::table('racks')->insert([
             'name_rack' => "Cyber2-NF3-02-4",
-            'location_id' => "2"
+            'location_id' => "2",
+            'created_at' => '2023-08-24 04:52:30'
         ]);
     }
 }

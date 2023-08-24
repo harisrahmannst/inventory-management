@@ -16,18 +16,22 @@ class TypeSeeder extends Seeder
         //
         DB::table('types')->insert([
             'name_type' => "Server",
+            'created_at' => '2023-08-24 04:52:30'
         ]);
 
         DB::table('types')->insert([
             'name_type' => "Storage",
+            'created_at' => '2023-08-24 04:52:30'
         ]);
 
         DB::table('types')->insert([
             'name_type' => "Router",
+            'created_at' => '2023-08-24 04:52:30'
         ]);
 
         DB::table('types')->insert([
             'name_type' => "Switch",
+            'created_at' => '2023-08-24 04:52:30'
         ]);
     }
 }
