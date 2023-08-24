@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\RackController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\TypeController;
 use Illuminate\Support\Facades\Route;
@@ -53,5 +54,10 @@ Route::middleware([
         return view('locations.index');
     })->name('location');
     Route::resource('location', LocationController::class);
+
+    Route::get('/rack', function () {
+        return view('racks.index');
+    })->name('rack');
+    Route::resource('rack', RackController::class);
 
 });

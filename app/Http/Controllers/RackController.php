@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\location;
 use App\Models\rack;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,9 @@ class RackController extends Controller
      */
     public function index()
     {
-        //
+        $racks = rack::with('location')->get();
+        
+        return view('racks.index', compact('racks'));
     }
 
     /**
@@ -20,7 +23,8 @@ class RackController extends Controller
      */
     public function create()
     {
-        //
+        $locations = location::all();
+        return view('racks.create', compact('locations'));
     }
 
     /**
@@ -28,7 +32,14 @@ class RackController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name_rack' => 'required',
+            'location_id' => 'required|exists:sites,id',
+        ]);
+    
+        rack::create($data);
+    
+        return redirect('/rack')->with('success', 'Rack created successfully.');
     }
 
     /**
@@ -44,7 +55,9 @@ class RackController extends Controller
      */
     public function edit(rack $rack)
     {
-        //
+        $locations = location::all();
+
+        return view('racks.edit', compact('rack', 'locations'));
     }
 
     /**
@@ -52,7 +65,14 @@ class RackController extends Controller
      */
     public function update(Request $request, rack $rack)
     {
-        //
+        $data = $request->validate([
+            'name_rack' => 'required',
+            'location_id' => 'required|exists:sites,id',
+        ]);
+    
+        $rack->update($data);
+    
+        return redirect('/rack')->with('success', 'Rack created successfully.');
     }
 
     /**
@@ -60,6 +80,8 @@ class RackController extends Controller
      */
     public function destroy(rack $rack)
     {
-        //
+        $rack->delete();
+
+        return redirect('/rack')->with('success', 'Rack deleted successfully.');
     }
 }
