@@ -146,4 +146,85 @@
         </div>
     </div>
 
+    <script>
+        // Ambil elemen select site, location, dan rack
+        var siteSelect = document.getElementById('device_site_id');
+        var locationSelect = document.getElementById('device_location_id');
+        var rackSelect = document.getElementById('device_rack_id');
+
+        // Fungsi untuk menghapus semua opsi pada select location dan rack
+        function clearLocationOptions() {
+            locationSelect.innerHTML = '';
+            clearRackOptions();
+        }
+
+        // Fungsi untuk menghapus semua opsi pada select rack
+        function clearRackOptions() {
+            rackSelect.innerHTML = '';
+        }
+
+        // Fungsi untuk menambahkan opsi location berdasarkan site yang dipilih
+        function addLocationOption(locationId, locationName) {
+            var option = document.createElement('option');
+            option.value = locationId;
+            option.textContent = locationName;
+            locationSelect.appendChild(option);
+        }
+
+        // Fungsi untuk menambahkan opsi rack berdasarkan location yang dipilih
+        function addRackOption(rackId, rackName) {
+            var option = document.createElement('option');
+            option.value = rackId;
+            option.textContent = rackName;
+            rackSelect.appendChild(option);
+        }
+
+        // Fungsi untuk mengatur opsi location berdasarkan site yang dipilih
+        function updateLocationOptions() {
+            var selectedSiteId = siteSelect.value;
+
+            // Hapus semua opsi pada select location dan rack
+            clearLocationOptions();
+
+            // Tambahkan opsi location yang sesuai dengan site yang dipilih
+            @foreach ($locations as $location)
+                if ({{ $location->site_id }} == selectedSiteId) {
+                    addLocationOption({{ $location->id }}, '{{ $location->name_location }}');
+                }
+            @endforeach
+        }
+
+        // Fungsi untuk mengatur opsi rack berdasarkan location yang dipilih
+        function updateRackOptions() {
+            var selectedLocationId = locationSelect.value;
+
+            // Hapus semua opsi pada select rack
+            clearRackOptions();
+
+            // Tambahkan opsi rack yang sesuai dengan location yang dipilih
+            @foreach ($racks as $rack)
+                if ({{ $rack->location_id }} == selectedLocationId) {
+                    addRackOption({{ $rack->id }}, '{{ $rack->name_rack }}');
+                }
+            @endforeach
+        }
+
+        // Event listener saat perubahan terjadi pada select site
+        siteSelect.addEventListener('change', function() {
+            // Perbarui opsi location dan rack
+            updateLocationOptions();
+            updateRackOptions();
+        });
+
+        // Event listener saat perubahan terjadi pada select location
+        locationSelect.addEventListener('change', function() {
+            // Perbarui opsi rack
+            updateRackOptions();
+        });
+
+        // Inisialisasi opsi location dan rack berdasarkan site dan location yang dipilih saat halaman dimuat
+        updateLocationOptions();
+        updateRackOptions();
+    </script>
+
 </x-app-layout>

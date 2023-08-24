@@ -19,5 +19,17 @@ class RackSeeder extends Seeder
             'location_id' => "2",
             'created_at' => '2023-08-24 04:52:30'
         ]);
+
+        DB::table('racks')->insert([
+            'name_rack' => "SMR-L10-01-1",
+            'location_id' => "1",
+            'created_at' => '2023-08-24 04:52:30'
+        ]);
+
+        DB::table('racks')->insert([
+            'name_rack' => "RKO-L1-01-1",
+            'location_id' => "3",
+            'created_at' => '2023-08-24 04:52:30'
+        ]);
     }
 }

@@ -117,7 +117,6 @@ class DeviceController extends Controller
             'device_location_id' => 'required',
             'device_rack_id' => 'required',
             'device_status' => 'required',
-            'device_image' => 'required',
             'device_describtion' => 'required',
         ]);
     
