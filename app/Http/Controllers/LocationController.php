@@ -72,7 +72,7 @@ class LocationController extends Controller
     
         $location->update($data);
     
-        return redirect('/location')->with('success', 'Location created successfully.');
+        return redirect('/location')->with('success', 'Location update successfully.');
     }
 
     /**

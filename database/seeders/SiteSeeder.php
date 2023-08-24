@@ -16,14 +16,17 @@ class SiteSeeder extends Seeder
         //
         DB::table('sites')->insert([
             'name_site' => "Data Center",
+            'created_at' => '2023-08-24 04:52:30'
         ]);
 
         DB::table('sites')->insert([
             'name_site' => "Disaster Recovery Center",
+            'created_at' => '2023-08-24 04:52:30'
         ]);
 
         DB::table('sites')->insert([
             'name_site' => "Client",
+            'created_at' => '2023-08-24 04:52:30'
         ]);
       
     }

@@ -12,4 +12,9 @@ class site extends Model
     protected $fillable = [
         'name_site'
     ];
+
+    public function devices()
+    {
+        return $this->hasMany(device::class);
+    }
 }

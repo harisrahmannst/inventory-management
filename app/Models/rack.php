@@ -18,4 +18,9 @@ class rack extends Model
     {
         return $this->belongsTo(location::class);
     }
+
+    public function devices()
+    {
+        return $this->hasMany(device::class);
+    }
 }

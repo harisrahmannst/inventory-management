@@ -16,14 +16,17 @@ class BrandSeeder extends Seeder
         //
         DB::table('brands')->insert([
             'name_brand' => "CISCO",
+            'created_at' => '2023-08-24 04:52:30'
         ]);
 
         DB::table('brands')->insert([
             'name_brand' => "HPE",
+            'created_at' => '2023-08-24 04:52:30'
         ]);
 
         DB::table('brands')->insert([
             'name_brand' => "Dell",
+            'created_at' => '2023-08-24 04:52:30'
         ]);
     }
 }

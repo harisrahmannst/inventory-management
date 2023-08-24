@@ -20,7 +20,8 @@ class DeviceController extends Controller
     public function index()
     {
         //
-        return view('devices.index');
+        $devices = device::all();
+        return view('devices.index', compact('devices'));
     }
 
     /**
@@ -93,6 +94,12 @@ class DeviceController extends Controller
     public function edit(device $device)
     {
         //
+        $locations = location::all();
+        $sites = site::all();
+        $brands = brand::all();
+        $types = type::all();
+        $racks = rack::all();
+        return view('devices.edit', compact('device','types', 'brands', 'sites', 'locations', 'racks'));
     }
 
     /**
@@ -101,6 +108,29 @@ class DeviceController extends Controller
     public function update(Request $request, device $device)
     {
         //
+        $data = $request->validate([
+            'device_name' => 'required',
+            'device_brand_id' => 'required',
+            'serial_number' => 'required',
+            'device_type_id' => 'required',
+            'device_site_id' => 'required',
+            'device_location_id' => 'required',
+            'device_rack_id' => 'required',
+            'device_status' => 'required',
+            'device_image' => 'required',
+            'device_describtion' => 'required',
+        ]);
+    
+        if ($request->hasFile('device_image')) {
+            $file = $request->file('device_image');
+            $path = time() . '_' . $data['device_name'] . '.' . $file->getClientOriginalExtension();
+            Storage::disk('local')->put('public/images/' . $path, file_get_contents($file));
+            $data['device_image'] = $path;
+        }
+    
+        $device->update($data);
+    
+        return redirect('/device')->with('success', 'Asset update successfully.');
     }
 
     /**
@@ -109,5 +139,8 @@ class DeviceController extends Controller
     public function destroy(device $device)
     {
         //
+        $device->delete();
+
+        return redirect('/device')->with('success', 'Asset deleted successfully.');
     }
 }

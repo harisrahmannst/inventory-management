@@ -12,4 +12,9 @@ class type extends Model
     protected $fillable = [
         'name_type'
     ];
+
+    public function devices()
+    {
+        return $this->hasMany(device::class);
+    }
 }

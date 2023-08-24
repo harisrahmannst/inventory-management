@@ -21,4 +21,30 @@ class device extends Model
         'device_describtion',
         'device_image',
     ];
+
+    public function types()
+    {
+        return $this->belongsTo(type::class, 'device_type_id');
+    }
+
+    public function brands()
+    {
+        return $this->belongsTo(brand::class, 'device_brand_id');
+    }
+
+    public function sites()
+    {
+        return $this->belongsTo(site::class, 'device_site_id');
+    }
+
+    public function locations()
+    {
+        return $this->belongsTo(location::class, 'device_location_id');
+    }
+
+    public function racks()
+    {
+        return $this->belongsTo(rack::class, 'device_rack_id');
+    }
+
 }
