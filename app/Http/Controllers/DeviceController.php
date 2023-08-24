@@ -20,7 +20,8 @@ class DeviceController extends Controller
     public function index()
     {
         //
-        return view('devices.index');
+        $devices = device::all();
+        return view('devices.index', compact('devices'));
     }
 
     /**
@@ -109,5 +110,8 @@ class DeviceController extends Controller
     public function destroy(device $device)
     {
         //
+        $device->delete();
+
+        return redirect('/device')->with('success', 'Asset deleted successfully.');
     }
 }
