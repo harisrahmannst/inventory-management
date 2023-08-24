@@ -62,7 +62,7 @@
                                             class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">
                                             Edit
                                         </a>
-                                        <form action="{{ route('site.destroy', $site->id) }}" method="POST" style="display: inline-block;">
+                                        {{-- <form action="{{ route('site.destroy', $site->id) }}" method="POST" style="display: inline-block;">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"
@@ -70,7 +70,17 @@
                                                 onclick="return confirm('Are you sure you want to delete this site?')">
                                                 Delete
                                             </button>
-                                        </form>                         
+                                        </form>    --}}
+                                        
+                                        <a href="{{ route('site.destroy', $site->id) }}" 
+                                            class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" 
+                                            onclick="event.preventDefault(); if (confirm('Are you sure you want to delete this Site?')) document.getElementById('delete-form-{{ $site->id }}').submit();">
+                                            Delete
+                                        </a>
+                                        <form id="delete-form-{{ $site->id }}" action="{{ route('site.destroy', $site->id) }}" method="POST" style="display: none;">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
