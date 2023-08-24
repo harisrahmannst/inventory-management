@@ -108,16 +108,14 @@
                 </div>
 
                 <div class="mb-6">
-
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                        for="device_image">Upload
-                        file</label>
+                        for="device_image">Upload file</label>
                     <input
                         class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                        aria-describedby="device_image_help" id="device_image" name="device_image" type="file">
-                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="device_image_help">SVG, PNG, JPG or GIF
-                        .</p>
-
+                        aria-describedby="device_image_help" id="device_image" name="device_image" type="file"
+                        multiple>
+                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="device_image_help">SVG, PNG, JPG or
+                        GIF.</p>
                 </div>
 
                 <div class="mb-6">

@@ -86,6 +86,7 @@ class DeviceController extends Controller
     public function show(device $device)
     {
         //
+        return view('devices.show');
     }
 
     /**
