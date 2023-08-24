@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\TypeController;
 use Illuminate\Support\Facades\Route;
@@ -42,5 +43,10 @@ Route::middleware([
         return view('types.index');
     })->name('type');
     Route::resource('type', TypeController::class);
+
+    Route::get('/location', function () {
+        return view('locations.index');
+    })->name('location');
+    Route::resource('location', LocationController::class);
 
 });
