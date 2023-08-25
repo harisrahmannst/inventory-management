@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Create Devices') }}
+            {{ __('Detail Devices') }}
         </h2>
     </x-slot>
 
@@ -14,7 +14,8 @@
                     <!-- Image gallery -->
                     <div class="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
                         <div class="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
-                            {!! QrCode::size(300)->generate(Request::url()) !!}
+                            <img src="{{ asset('storage/images/qrcodes/' . $device->device_name . '.png') }}"
+                                alt="QR Code">
                         </div>
 
                         {{-- <div class="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">

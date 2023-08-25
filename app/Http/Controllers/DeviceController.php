@@ -11,6 +11,7 @@ use App\Models\rack;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class DeviceController extends Controller
 {
@@ -83,10 +84,26 @@ class DeviceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(device $device)
+    public function show(Request $request, device $device)
     {
         //
-        return view('devices.show', compact('device'));
+        $filename = $this->generateQRCode($request, $device);
+        return view('devices.show', compact('device', 'filename'));
+    }
+
+    public function generateQRCode(Request $request, device $device)
+    {
+        $url = $request->url();
+        $filename = $device->device_name . '.png';
+
+        // Generate the QR code
+        $qrCode = QrCode::format('png')->size(300)->generate($url);
+
+        // Save the QR code to storage
+        Storage::put('public/images/qrcodes/' . $filename, $qrCode);
+
+        // Return the path to the saved QR code
+        return 'public/images/qrcodes/' . $filename;
     }
 
     /**

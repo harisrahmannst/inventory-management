@@ -30,9 +30,9 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/device', function () {
-        return view('devices.index');
-    })->name('device');
+    // Route::get('/device', function () {
+    //     return view('devices.index');
+    // })->name('device');
     Route::resource('device', DeviceController::class);
 
     Route::get('/brand', function () {
