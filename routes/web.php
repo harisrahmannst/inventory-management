@@ -4,6 +4,7 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\RackController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\TypeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DeviceController;
 
@@ -30,10 +31,12 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    // Route::get('/device', function () {
-    //     return view('devices.index');
-    // })->name('device');
+    Route::get('/device', function () {
+        return view('devices.index');
+    })->name('device');
     Route::resource('device', DeviceController::class);
+    
+    Route::resource('user', UserController::class);
 
     Route::get('/brand', function () {
         return view('brands.index');
