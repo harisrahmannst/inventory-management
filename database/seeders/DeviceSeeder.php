@@ -26,7 +26,7 @@ class DeviceSeeder extends Seeder
             'device_rack_id' => "1",
             'device_status' => "Digunakan",
             'device_image' => "",
-            'device_describtion' => "Memory Besar",
+            'device_describtion' => "Intel Xeon-Gold 6238 (2.1GHz/22-core/140W) FIO Processor Kit for HPE ProLiant DL380 Gen10, HPE SimpliVity 768GB (12x64GB) DDR4-2933 Registered Memory Kit, HPE 300GB SAS 12G Mission Critical 10K SFF SC 3-year Warranty Multi Vendor HDD",
             'qrcode' => "",
         ]);
 
