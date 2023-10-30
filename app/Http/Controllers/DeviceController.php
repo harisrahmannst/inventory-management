@@ -180,6 +180,8 @@ class DeviceController extends Controller
             $device = device::find($deviceId);
     
             if ($device) {
+
+                // Menambahkan gambar QR code
                 $drawing = new Drawing();
                 $drawing->setPath(public_path('/storage/images/qrcodes/' . $device->device_name . '.png'));
                 $drawing->setHeight(90);
@@ -191,6 +193,18 @@ class DeviceController extends Controller
                 $drawing->setCoordinates($coordinate);
     
                 $export->addDrawing($drawing);
+
+                // Menambahkan gambar perangkat
+                $deviceImage = new Drawing();
+                $deviceImage->setPath(public_path('/storage/images/' . $device->device_image));
+                $deviceImage->setHeight(90);
+
+                // Tentukan posisi kolom untuk gambar perangkat
+                $imageColumn = 'J';
+                $imageCoordinate = $imageColumn . $row;
+                $deviceImage->setCoordinates($imageCoordinate);
+
+                $export->addDrawing($deviceImage);
             }
         }
     
