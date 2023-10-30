@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Excel;
+use App\Exports\ExportsDevice;
 
 class DeviceController extends Controller
 {
@@ -160,4 +162,14 @@ class DeviceController extends Controller
 
         return redirect('/device')->with('success', 'Asset deleted successfully.');
     }
+
+    //export data
+
+    public function exportDeviceData(){
+
+        $fileName = 'devices.xlsx';
+
+        return Excel::download(new ExportsDevice, $fileName);
+         
+      }
 }

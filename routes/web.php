@@ -63,4 +63,6 @@ Route::middleware([
     })->name('rack');
     Route::resource('rack', RackController::class);
 
+    Route::get('export-devices-data', [DeviceController::class, 'exportDeviceData']);
+
 });
