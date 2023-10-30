@@ -7,6 +7,8 @@
     use Maatwebsite\Excel\Concerns\WithHeadings;
     use Maatwebsite\Excel\Concerns\WithMapping;
     use Maatwebsite\Excel\Concerns\Exportable;
+    use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+    use Maatwebsite\Excel\Concerns\WithCustomStartCell;
 
     use App\Models\device;
     use App\Models\type;
@@ -15,7 +17,7 @@
     use App\Models\location;
     use App\Models\rack;
 
-class ExportsDevice implements FromCollection, WithHeadings, WithMapping {
+class ExportsDevice implements WithCustomStartCell, ShouldAutoSize, FromCollection, WithHeadings, WithMapping {
 
     public function collection(){
 
@@ -42,21 +44,26 @@ class ExportsDevice implements FromCollection, WithHeadings, WithMapping {
     }
 
     public function headings(): array
-{
-    return [
-        'No',
-        'Device Name',
-        'Type',
-        'Brand',
-        'Serial Number',
-        'Site',
-        'Location',
-        'Rack',
-        'Status',
-        'Image',
-        'Describtion',
-        'Qrcode'
-    ];
-}
+    {
+        return [
+            'No',
+            'Device Name',
+            'Type',
+            'Brand',
+            'Serial Number',
+            'Site',
+            'Location',
+            'Rack',
+            'Status',
+            'Image',
+            'Describtion',
+            'Qrcode'
+        ];
+    }
+
+    public function startCell(): string
+    {
+        return 'A5';
+    }
 
 }
