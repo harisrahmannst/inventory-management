@@ -9,6 +9,10 @@
     use Maatwebsite\Excel\Concerns\Exportable;
     use Maatwebsite\Excel\Concerns\ShouldAutoSize;
     use Maatwebsite\Excel\Concerns\WithCustomStartCell;
+    use Maatwebsite\Excel\Concerns\WithDrawings;
+    use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
+    use App\Exports\ExportsDevice;
+    use Maatwebsite\Excel\Facades\Excel;
 
     use App\Models\device;
     use App\Models\type;
@@ -17,16 +21,27 @@
     use App\Models\location;
     use App\Models\rack;
 
-class ExportsDevice implements WithCustomStartCell, ShouldAutoSize, FromCollection, WithHeadings, WithMapping {
+class ExportsDevice implements WithDrawings, WithCustomStartCell, ShouldAutoSize, FromCollection, WithHeadings, WithMapping {
 
-    public function collection(){
+    use Exportable;
 
-        // return device::all();
-        return device::with('types','brands','sites','locations','racks')->get();
+    private $devices;
+    private $drawings;
 
+    public function __construct($devices)
+    {
+        $this->devices = $devices;
+        $this->drawings = [];
     }
 
-    public function map($device) : array {
+    public function drawings()
+    {
+        return $this->drawings;
+    }
+
+    public function map($device): array
+    {
+        // Map data perangkat ke dalam array
         return [
             $device->id,
             $device->device_name,
@@ -45,6 +60,7 @@ class ExportsDevice implements WithCustomStartCell, ShouldAutoSize, FromCollecti
 
     public function headings(): array
     {
+        // Definisikan judul kolom
         return [
             'No',
             'Device Name',
@@ -56,9 +72,20 @@ class ExportsDevice implements WithCustomStartCell, ShouldAutoSize, FromCollecti
             'Rack',
             'Status',
             'Image',
-            'Describtion',
+            'Description',
             'Qrcode'
         ];
+    }
+
+    public function collection()
+    {
+        // Ambil data perangkat berdasarkan ID yang diberikan
+        return Device::whereIn('id', $this->devices)->get();
+    }
+
+    public function addDrawing($drawing)
+    {
+        $this->drawings[] = $drawing;
     }
 
     public function startCell(): string

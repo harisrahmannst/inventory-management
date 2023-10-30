@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Redirect;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Excel;
 use App\Exports\ExportsDevice;
+use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
+use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 
 class DeviceController extends Controller
 {
@@ -165,11 +167,33 @@ class DeviceController extends Controller
 
     //export data
 
-    public function exportDeviceData(){
-
+    public function exportDeviceData()
+    {
         $fileName = 'devices.xlsx';
+    
+        // Ambil semua ID perangkat dari database
+        $devices = device::pluck('id')->toArray();
+    
+        $export = new ExportsDevice($devices);
+    
+        foreach ($devices as $index => $deviceId) {
+            $device = device::find($deviceId);
+    
+            if ($device) {
+                $drawing = new Drawing();
+                $drawing->setPath(public_path('/storage/images/qrcodes/' . $device->device_name . '.png'));
+                $drawing->setHeight(90);
 
-        return Excel::download(new ExportsDevice, $fileName);
-         
-      }
+                // Tentukan posisi kolom untuk gambar qrcode
+                $column = 'L';
+                $row = $index + 6; // Baris 6, 7, 8, dst.
+                $coordinate = $column . $row;
+                $drawing->setCoordinates($coordinate);
+    
+                $export->addDrawing($drawing);
+            }
+        }
+    
+        return Excel::download($export, $fileName);
+    }
 }
