@@ -19,7 +19,7 @@ use App\Http\Controllers\DeviceController;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'home_index'])->name('home');
 
 Route::middleware([
     'auth:sanctum',
@@ -27,9 +27,16 @@ Route::middleware([
     'verified',
 
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+
+    Route::get('/dashboard', [\App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+
+    // Route::get('/dashboard', function () {
+    //     return view('dashboard');
+    // })->name('dashboard');
+
+    Route::get('/home', function () {
+        return view('home');
+    })->name('home');
 
     Route::get('/device', function () {
         return view('devices.index');

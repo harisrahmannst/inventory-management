@@ -17,8 +17,8 @@
                             <div>
                                 <a href="#"
                                     class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                        Total Device</h5>
+                                    <h5 class="mb-2 text-2xl  tracking-tight text-gray-900 dark:text-white">
+                                        Device</h5>
                                     <dt class="mb-2 text-3xl font-extrabold">{{ $deviceCount }}</dt>
                                 </a>
                             </div>
@@ -27,8 +27,8 @@
 
                                 <a href="#"
                                     class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                        Total Racks</h5>
+                                    <h5 class="mb-2 text-2xl  tracking-tight text-gray-900 dark:text-white">
+                                        Racks</h5>
                                     <dt class="mb-2 text-3xl font-extrabold">{{ $rackCount }}</dt>
                                 </a>
 
@@ -38,8 +38,8 @@
 
                                 <a href="#"
                                     class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                        Total Site</h5>
+                                    <h5 class="mb-2 text-2xl  tracking-tight text-gray-900 dark:text-white">
+                                        Site</h5>
                                     <dt class="mb-2 text-3xl font-extrabold">{{ $siteCount }}</dt>
                                 </a>
 
@@ -48,8 +48,8 @@
 
                                 <a href="#"
                                     class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                        Total Location</h5>
+                                    <h5 class="mb-2 text-2xl  tracking-tight text-gray-900 dark:text-white">
+                                        Location</h5>
                                     <dt class="mb-2 text-3xl font-extrabold">{{ $locationCount }}</dt>
                                 </a>
 

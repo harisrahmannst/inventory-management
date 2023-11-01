@@ -16,7 +16,13 @@ class HomeController extends Controller
         $rackCount  = rack::count();
         $siteCount  = site::count();
         $locationCount  = location::count();
-        // return redirect()->route('dashboard')->with('deviceCount', $deviceCount);
+        
         return view('dashboard', compact('deviceCount','rackCount','siteCount','locationCount'));
+    }
+
+    public function home_index()
+    {
+
+        return redirect()->route('home');
     }
 }

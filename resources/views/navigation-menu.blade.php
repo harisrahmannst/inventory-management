@@ -3,9 +3,10 @@
         <div class="flex items-center justify-between">
             <div class="flex items-center justify-start">
                 <a href="/" class="flex ml-2 md:mr-24">
-                    <img src="/images/logo-binus.jpg" class="h-8 mr-3" alt="Logo" />
-                    <span
-                        class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-black">BINUS</span>
+                    <img src="https://edi-indonesia.co.id/wp-content/uploads/2018/10/logo_transparant.png"
+                        class="h-8 mr-3" alt="Logo" />
+                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-black">PT EDI
+                        Indonesia</span>
                 </a>
             </div>
 
@@ -75,7 +76,7 @@
     <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
         <ul class="space-y-2 font-medium">
             <li>
-                <a href="/"
+                <a href="/dashboard"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
