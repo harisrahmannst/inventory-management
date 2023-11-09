@@ -34,7 +34,7 @@ class RackController extends Controller
     {
         $data = $request->validate([
             'name_rack' => 'required',
-            'location_id' => 'required|exists:sites,id',
+            'location_id' => 'required|exists:location,id',
         ]);
     
         rack::create($data);
